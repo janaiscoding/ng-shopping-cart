@@ -18,6 +18,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   product?: Product;
   cart?: CartItem[];
 
+  focusImg = "";
+
   sub = new Subscription();
 
   constructor(
@@ -37,9 +39,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       )
       .subscribe((product) => {
         this.product = product;
+        this.focusImg = product.url;
       });
 
     this.cart = this.cartService.fetchCart();
+  }
+
+  onFocusImg(e: any, img: string) {
+    this.focusImg = img;
   }
 
   onAddToCart(product: Product) {

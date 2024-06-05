@@ -1,6 +1,19 @@
 <div *ngIf="product; else loading">
-  <p>Product name: {{ product.name }}</p>
+  <div class="product__preview">
+    <div class="product__preview--gallery">
+      <img
+        *ngFor="let img of product.gallery"
+        [src]="img"
+        alt="Product Image"
+        (mouseenter)="onFocusImg($event, img)"
+      />
+    </div>
+    <div class="product__preview--focus">
+      <img [src]="focusImg" alt="Product Image" />
+    </div>
+  </div>
 
+  <p>Product name: {{ product.name }}</p>
   <button (click)="onAddToCart(product)">Add to bag</button>
 </div>
 
