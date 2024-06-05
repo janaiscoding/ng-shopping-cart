@@ -7,5 +7,10 @@
         <p class="product__header--price">{{ product.price }} €</p>
       </header>
     </a>
+    <button class="product__favorite" (click)="onAddToFavorite(product)">
+      <ng-icon
+        [name]="product.isFavorite ? 'radixHeartFilled' : 'radixHeart'"
+      ></ng-icon>
+    </button>
   </article>
 </section>

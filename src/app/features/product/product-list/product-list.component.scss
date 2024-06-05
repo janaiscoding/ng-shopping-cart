@@ -21,4 +21,20 @@
       overflow: hidden;
     }
   }
+
+  &__favorite {
+    position: absolute;
+    top: 5%;
+    left: 85%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+
+    &:hover {
+      scale: 1.1;
+      transition: all 150ms ease-in;
+    }
+  }
 }

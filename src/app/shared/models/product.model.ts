@@ -4,4 +4,5 @@ export interface Product {
   url: string;
   price: number;
   description?: string;
+  isFavorite?: boolean;
 }
