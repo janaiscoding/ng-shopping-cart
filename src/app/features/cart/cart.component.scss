@@ -1,0 +1,28 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+
+    &--subtitle {
+      font-size: 0.875rem;
+    }
+
+    &--main-title {
+      font-size: 3rem;
+    }
+  }
+
+  &__product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

@@ -1,9 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { ProductService } from "../product.service";
-import { switchMap } from "rxjs";
+import { Subscription, switchMap } from "rxjs";
 import { CommonModule } from "@angular/common";
 import { Product } from "../../../shared/models/product.model";
+import { CartService } from "../../cart/cart.service";
+import { CartItem } from "../../../shared/models/cart.model";
 
 @Component({
   selector: "app-product-detail",
@@ -12,20 +14,39 @@ import { Product } from "../../../shared/models/product.model";
   templateUrl: "./product-detail.component.html",
   styleUrl: "./product-detail.component.scss",
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy {
   product?: Product;
+  cart?: CartItem[];
 
-  constructor(private route: ActivatedRoute, private service: ProductService) {}
+  sub = new Subscription();
+
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
-          return this.service.fetchProduct(parseInt(params.get("id")!, 10));
+          return this.productService.fetchProduct(
+            parseInt(params.get("id")!, 10)
+          );
         })
       )
       .subscribe((product) => {
-        this.product = product; // Store the product data
+        this.product = product;
       });
+
+    this.cart = this.cartService.fetchCart();
+  }
+
+  onAddToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

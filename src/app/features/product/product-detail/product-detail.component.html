@@ -1,5 +1,7 @@
 <div *ngIf="product; else loading">
   <p>Product name: {{ product.name }}</p>
+
+  <button (click)="onAddToCart(product)">Add to bag</button>
 </div>
 
 <ng-template #loading>
