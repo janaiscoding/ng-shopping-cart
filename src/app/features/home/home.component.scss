@@ -1,0 +1,24 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+
+  &__title {
+    text-align: center;
+    align-self: center;
+
+    &--subtitle {
+      font-size: 2rem;
+    }
+    &--main-title {
+      font-size: 3rem;
+    }
+  }
+
+  &__product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

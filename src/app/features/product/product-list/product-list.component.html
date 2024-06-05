@@ -1,0 +1,11 @@
+<section class="product-list">
+  <article class="product" *ngFor="let product of products">
+    <a [routerLink]="['/product', product.id]">
+      <img [src]="product.url" alt="Product Image" class="product__image" />
+      <header class="product__header">
+        <h2 class="product__header--name">{{ product.name }}</h2>
+        <p class="product__header--price">{{ product.price }} €</p>
+      </header>
+    </a>
+  </article>
+</section>

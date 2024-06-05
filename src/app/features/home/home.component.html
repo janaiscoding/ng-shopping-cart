@@ -1,0 +1,17 @@
+<section class="home">
+  <div class="home__breadcrumbs">
+    <a>Home</a>
+    <span> > </span>
+    <a> All jewelry </a>
+  </div>
+  <div class="home__title">
+    <h2 class="home__title--subtitle">Discover all our</h2>
+    <h1 class="home__title--main-title">Handmade Jewelry</h1>
+  </div>
+  <div class="home__product-list">
+    <p class="home__product-list--total" *ngIf="totalCount">
+      {{ totalCount }} products
+    </p>
+    <app-product-list></app-product-list>
+  </div>
+</section>
