@@ -7,19 +7,15 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ProductService {
-  products: Product[] = [];
+  private baseUrl: string = "http://localhost:3000/products";
 
   constructor(private http: HttpClient) {}
 
   fetchAll(): Observable<Product[]> {
-    return this.http.get<Product[]>("http://localhost:3000/products");
+    return this.http.get<Product[]>(this.baseUrl);
   }
 
-  fetchProduct(id: string) {
-    return this.products.filter((product) => product.id === id);
-  }
-
-  createProduct(product: any) {
-    this.products.push(product);
+  fetchProduct(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.baseUrl}/${id}`);
   }
 }

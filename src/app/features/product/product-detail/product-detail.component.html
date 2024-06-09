@@ -1,15 +1,15 @@
-<div *ngIf="product; else loading">
+<div *ngIf="product$ | async as product; else loading">
   <div class="product__preview">
     <div class="product__preview--gallery">
       <img
         *ngFor="let img of product.gallery"
         [src]="img"
         alt="Product Image"
-        (mouseenter)="onFocusImg($event, img)"
+        (mouseenter)="onFocusImg(img)"
       />
     </div>
     <div class="product__preview--focus">
-      <img [src]="focusImg" alt="Product Image" />
+      <img [src]="focusImg || product.gallery[0]" alt="Product Image" />
     </div>
   </div>
 
@@ -17,6 +17,4 @@
   <button (click)="onAddToCart(product)">Add to bag</button>
 </div>
 
-<ng-template #loading>
-  <p>Loading...</p>
-</ng-template>
+<ng-template #loading> Loading... </ng-template>

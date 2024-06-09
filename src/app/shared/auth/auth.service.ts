@@ -10,7 +10,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         this.isLoggedIn = true;
-      }, 3000);
+      }, 500);
     });
   }
 
@@ -18,7 +18,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         this.isLoggedIn = false;
-      }, 3000);
+      }, 500);
     });
   }
 

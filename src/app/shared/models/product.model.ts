@@ -1,9 +1,9 @@
 export interface Product {
   id: string;
   name: string;
-  url: string;
+  thumbnail: string;
+  gallery: string[];
   price: number;
   description?: string;
   isFavorite?: boolean;
-  gallery?: string[];
 }
