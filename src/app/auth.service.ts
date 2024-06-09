@@ -23,7 +23,6 @@ export class AuthService {
   }
 
   IsAuth() {
-    // console.log("isAuth", this.isLoggedIn);
     return this.isLoggedIn;
   }
 }

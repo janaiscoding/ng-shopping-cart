@@ -32,9 +32,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
-          return this.productService.fetchProduct(
-            parseInt(params.get("id")!, 10)
-          );
+          return this.productService.fetchProduct(params.get("id")!);
         })
       )
       .subscribe((product) => {

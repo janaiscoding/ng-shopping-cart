@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { CartService } from "./cart.service";
 import { CommonModule } from "@angular/common";
 import { CartItemComponent } from "./cart-item/cart-item.component";
+import { CartItem } from "../../shared/models/cart.model";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-cart",
@@ -20,9 +22,5 @@ export class CartComponent implements OnInit {
     this.cart = this.cartService.fetchCart();
 
     console.log("this.cart: ", this.cart);
-    // this.totalCost = this.cart.reduce(
-    //   (prev, curr) => prev + curr.quantity * curr.price,
-    //   0
-    // );
   }
 }

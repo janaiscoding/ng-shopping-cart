@@ -16,6 +16,6 @@ export class HomeComponent implements OnInit {
   constructor(private service: ProductService) {}
 
   ngOnInit(): void {
-    this.totalCount = this.service.fetchAllProducts().length;
+    // this.totalCount = this.service.fetchAllProducts().length;
   }
 }

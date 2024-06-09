@@ -8,8 +8,14 @@
   <a class="logo" routerLink="/">Home</a>
   <ul>
     <li><a routerLink="/">Blog</a></li>
-    <li><a routerLink="/">Login</a></li>
+    <li *ngIf="IsAuth; else login">
+      <button (click)="onLogout()">Logout</button>
+    </li>
     <li><a routerLink="/">💗</a></li>
     <li><a routerLink="/cart">🛒</a></li>
   </ul>
 </nav>
+
+<ng-template #login>
+  <button (click)="onLogin()">Login</button>
+</ng-template>

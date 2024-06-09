@@ -1,4 +1,6 @@
 <article>
   {{ item.name }} - {{ item.quantity }} =
   {{ item.price * item.quantity }}
+
+  <button (click)="onIncrement()">Add +1</button>
 </article>

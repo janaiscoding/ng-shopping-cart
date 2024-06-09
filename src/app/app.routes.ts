@@ -5,11 +5,9 @@ import { ProductDetailComponent } from "./features/product/product-detail/produc
 import { HomeComponent } from "./features/home/home.component";
 import { CartComponent } from "./features/cart/cart.component";
 import { authGuard } from "./auth-guard.service";
-import { LoginComponent } from "./features/login/login.component";
 
 export const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "login", component: LoginComponent },
   {
     path: "products",
     component: ProductComponent,

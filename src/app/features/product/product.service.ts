@@ -1,18 +1,21 @@
 import { Injectable } from "@angular/core";
 import { Product } from "../../shared/models/product.model";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProductService {
-  products: any[] = [];
-  constructor() {}
+  products: Product[] = [];
 
-  fetchAllProducts(): Product[] {
-    return this.products;
+  constructor(private http: HttpClient) {}
+
+  fetchAll(): Observable<Product[]> {
+    return this.http.get<Product[]>("http://localhost:3000/products");
   }
 
-  fetchProduct(id: number) {
+  fetchProduct(id: string) {
     return this.products.filter((product) => product.id === id);
   }
 
