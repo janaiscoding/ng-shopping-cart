@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "./cart.service";
-import { CartItem } from "../../shared/models/cart.model";
 import { CommonModule } from "@angular/common";
 import { CartItemComponent } from "./cart-item/cart-item.component";
 
@@ -12,7 +11,7 @@ import { CartItemComponent } from "./cart-item/cart-item.component";
   styleUrl: "./cart.component.scss",
 })
 export class CartComponent implements OnInit {
-  cart?: CartItem[];
+  cart?: any;
   totalCost = 0;
 
   constructor(private cartService: CartService) {}
@@ -21,9 +20,9 @@ export class CartComponent implements OnInit {
     this.cart = this.cartService.fetchCart();
 
     console.log("this.cart: ", this.cart);
-    this.totalCost = this.cart.reduce(
-      (prev, curr) => prev + curr.quantity * curr.price,
-      0
-    );
+    // this.totalCost = this.cart.reduce(
+    //   (prev, curr) => prev + curr.quantity * curr.price,
+    //   0
+    // );
   }
 }
