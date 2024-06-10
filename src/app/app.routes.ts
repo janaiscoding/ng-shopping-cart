@@ -5,6 +5,7 @@ import { ProductDetailComponent } from "./features/product/product-detail/produc
 import { HomeComponent } from "./features/home/home.component";
 import { CartComponent } from "./features/cart/cart.component";
 import { authGuard } from "./shared/guards/auth-guard.service";
+import { LoginComponent } from "./features/login/login.component";
 
 export const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
     canActivate: [authGuard],
     component: CartComponent,
   },
+  { path: "login", component: LoginComponent },
   { path: "**", component: PageNotFoundComponent },
 ];
