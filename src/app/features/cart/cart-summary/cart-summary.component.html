@@ -1,1 +1,30 @@
-<p>cart-summary works!</p>
+<div class="summary">
+  <div class="summary__header">
+    <p>PRODUCT</p>
+    <p>DETAILS</p>
+    <p>PRICE</p>
+    <p>QUANTITY</p>
+    <p>TOTAL</p>
+  </div>
+  <app-cart-item
+    *ngFor="let cartItem of cart"
+    [item]="cartItem"
+  ></app-cart-item>
+
+  <div class="summary__total">
+    <p>
+      Free shipping is valid on orders of 50$ or more shipped to a single french
+      address, after promotions and discounts are applied.
+    </p>
+
+    <h1 class="summary__total--title">Total Price:</h1>
+    <p class="summary__total--total-cost">{{ totalCost | currency }}</p>
+  </div>
+
+  <div class="summary__bottom-row">
+    <p>
+      Shipping, taxes, and discount codes will be calculated at the checkout.
+    </p>
+    <button (click)="onPurchase()">Complete</button>
+  </div>
+</div>

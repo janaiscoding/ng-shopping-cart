@@ -14,16 +14,10 @@ export class CartItemComponent {
   @Input() item!: CartItem;
   changesSaved = false;
 
-  constructor(
-    private cartService: CartService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private cartService: CartService) {}
 
   onIncrement() {
     this.changesSaved = true;
     this.cartService.addToCart(this.item, 1);
-
-    this.router.navigate(["../"], { relativeTo: this.route });
   }
 }
