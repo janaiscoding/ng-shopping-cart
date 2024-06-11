@@ -8,7 +8,7 @@
   <a class="logo" routerLink="/">Home</a>
   <ul>
     <li><a routerLink="/">Blog</a></li>
-    <li *ngIf="IsAuth; else login">
+    <li *ngIf="isAuth; else login">
       <button (click)="onLogout()">Logout</button>
     </li>
     <li><a routerLink="/">💗</a></li>
@@ -17,5 +17,5 @@
 </nav>
 
 <ng-template #login>
-  <button (click)="onLogin()">Login</button>
+  <a routerLink="/login">Login</a>
 </ng-template>

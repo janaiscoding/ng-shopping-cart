@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, RouterLink } from "@angular/router";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Subscription } from "rxjs";
 import { AuthService } from "../auth/auth.service";
@@ -11,23 +11,25 @@ import { AuthService } from "../auth/auth.service";
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
 })
-export class HeaderComponent implements OnInit {
-  IsAuth: boolean = false;
-  constructor(private authService: AuthService, private router: Router) {}
+export class HeaderComponent implements OnInit, OnDestroy {
+  isAuth: boolean = false;
+  private sub = new Subscription();
 
-  sub = new Subscription();
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.IsAuth = this.authService.IsAuth();
-    this.sub.add();
+    this.sub.add(
+      this.authService.IsAuth().subscribe((authStatus) => {
+        this.isAuth = authStatus;
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   onLogout() {
     this.authService.logOut();
-  }
-
-  onLogin() {
-    this.authService.login();
-    this.router.navigate(["/"]);
   }
 }

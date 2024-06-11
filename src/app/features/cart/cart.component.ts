@@ -23,4 +23,8 @@ export class CartComponent implements OnInit {
 
     console.log("this.cart: ", this.cart);
   }
+
+  onPurchase() {
+    console.log("placed order: ", this.cart);
+  }
 }

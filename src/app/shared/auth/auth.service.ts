@@ -1,15 +1,17 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  isLoggedIn = false;
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   login() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.isLoggedIn = true;
+        this.isLoggedInSubject.next(true);
       }, 500);
     });
   }
@@ -17,12 +19,12 @@ export class AuthService {
   logOut() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.isLoggedIn = false;
+        this.isLoggedInSubject.next(false);
       }, 500);
     });
   }
 
   IsAuth() {
-    return this.isLoggedIn;
+    return this.isLoggedIn$;
   }
 }
