@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { ProductComponent } from "./features/product/product.component";
-import { PageNotFoundComponent } from "./shared/page-not-found/page-not-found/page-not-found.component";
+import { PageNotFoundComponent } from "./shared/page-not-found/page-not-found.component";
 import { ProductDetailComponent } from "./features/product/product-detail/product-detail.component";
 import { HomeComponent } from "./features/home/home.component";
 import { CartComponent } from "./features/cart/cart.component";
