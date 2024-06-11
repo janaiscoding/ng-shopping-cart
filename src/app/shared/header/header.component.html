@@ -12,7 +12,14 @@
       <button (click)="onLogout()">Logout</button>
     </li>
     <li><a routerLink="/">💗</a></li>
-    <li><a routerLink="/cart">🛒</a></li>
+    <li>
+      <a routerLink="/cart"
+        >🛒
+        <ng-container *ngIf="cartItemCount > 0">
+          ({{ cartItemCount }})</ng-container
+        >
+      </a>
+    </li>
   </ul>
 </nav>
 
